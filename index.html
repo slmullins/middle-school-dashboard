@@ -1,0 +1,905 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Middle School Options — 2027-2028 (6th Grade) · Houston</title>
+<style>
+  :root{
+    --bg:#f4f6f9; --card:#ffffff; --ink:#1f2933; --muted:#64748b; --line:#e3e8ef;
+    --brand:#0f766e; --brand2:#0e7490; --private:#0d9488; --public:#b45309;
+    --gt:#7c3aed; --gt-bg:#f3ecfe; --ok:#16a34a; --warn:#d97706; --tbd:#64748b;
+    --shadow:0 1px 3px rgba(16,24,40,.06),0 1px 2px rgba(16,24,40,.04);
+    --shadow2:0 8px 24px rgba(16,24,40,.10);
+  }
+  *{box-sizing:border-box}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+    background:var(--bg);color:var(--ink);line-height:1.5;font-size:15px}
+  a{color:var(--brand2)}
+  header.top{background:linear-gradient(135deg,#0f766e,#155e75);color:#fff;padding:26px 20px 18px}
+  header.top .wrap{max-width:1200px;margin:0 auto}
+  header.top h1{margin:0 0 4px;font-size:24px;letter-spacing:-.3px}
+  header.top p{margin:0;opacity:.9;font-size:14px}
+  .wrap{max-width:1200px;margin:0 auto;padding:0 20px}
+  nav.tabs{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid var(--line);box-shadow:var(--shadow)}
+  nav.tabs .wrap{display:flex;gap:4px;overflow-x:auto}
+  nav.tabs button{appearance:none;border:0;background:none;padding:14px 14px;font-size:14px;font-weight:600;
+    color:var(--muted);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap}
+  nav.tabs button.active{color:var(--brand);border-bottom-color:var(--brand)}
+  nav.tabs button:hover{color:var(--ink)}
+  main{padding:22px 0 60px}
+  .panel{display:none}
+  .panel.active{display:block;animation:fade .25s ease}
+  @keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+  .banner{background:#fffbeb;border:1px solid #fde68a;border-radius:12px;padding:14px 16px;margin-bottom:18px;font-size:14px}
+  .banner b{color:#92400e}
+  .legend{display:flex;flex-wrap:wrap;gap:10px;margin:10px 0 4px;font-size:12px;color:var(--muted)}
+  .badge{display:inline-flex;align-items:center;gap:5px;padding:2px 9px;border-radius:999px;font-size:11.5px;font-weight:700;white-space:nowrap}
+  .b-private{background:#ccfbf1;color:#0f766e}
+  .b-public{background:#fef3c7;color:#92400e}
+  .b-gt{background:var(--gt-bg);color:var(--gt)}
+  .b-conf{background:#dcfce7;color:#166534}
+  .b-prior{background:#e0e7ff;color:#3730a3}
+  .b-tbd{background:#e2e8f0;color:#475569}
+  .controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin-bottom:14px}
+  .chip{appearance:none;border:1px solid var(--line);background:#fff;border-radius:999px;padding:7px 14px;font-size:13px;
+    font-weight:600;color:var(--muted);cursor:pointer}
+  .chip.active{background:var(--brand);border-color:var(--brand);color:#fff}
+  .tablewrap{overflow-x:auto;border:1px solid var(--line);border-radius:14px;background:#fff;box-shadow:var(--shadow)}
+  table{border-collapse:collapse;width:100%;min-width:900px;font-size:13.5px}
+  th,td{text-align:left;padding:11px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+  th{background:#f8fafc;font-size:12px;text-transform:uppercase;letter-spacing:.03em;color:var(--muted);
+    cursor:pointer;user-select:none;position:sticky;top:0}
+  th:hover{color:var(--ink)}
+  tr:last-child td{border-bottom:0}
+  tbody tr:hover{background:#f8fbfb}
+  td .schoolname{font-weight:700;color:var(--ink)}
+  td .sub{color:var(--muted);font-size:12px}
+  .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
+  .card .head{padding:16px 18px 12px;border-bottom:1px solid var(--line)}
+  .card .head h3{margin:0 0 4px;font-size:17px}
+  .card .head .meta{font-size:12.5px;color:var(--muted)}
+  .card .body{padding:14px 18px;font-size:13.5px;flex:1}
+  .row{display:flex;gap:8px;padding:6px 0;border-bottom:1px dashed var(--line)}
+  .row:last-child{border-bottom:0}
+  .row .k{flex:0 0 108px;color:var(--muted);font-weight:600;font-size:12.5px}
+  .row .v{flex:1}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+  details.proc{margin-top:12px;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+  details.proc>summary{cursor:pointer;padding:10px 12px;font-weight:700;font-size:13px;background:#f8fafc;list-style:none}
+  details.proc>summary::-webkit-details-marker{display:none}
+  details.proc>summary::before{content:"▸ ";color:var(--brand)}
+  details.proc[open]>summary::before{content:"▾ "}
+  details.proc .inner{padding:10px 14px;font-size:13px}
+  details.proc ol,details.proc ul{margin:6px 0;padding-left:20px}
+  details.proc li{margin:4px 0}
+  .card .foot{padding:12px 18px;border-top:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;gap:8px;font-size:12.5px}
+  .btnlink{display:inline-block;background:var(--brand);color:#fff;text-decoration:none;padding:7px 12px;border-radius:8px;font-weight:600;font-size:12.5px}
+  /* checklist */
+  .progress-overall{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px 18px;box-shadow:var(--shadow);margin-bottom:16px}
+  .bar{height:10px;border-radius:999px;background:#eef2f6;overflow:hidden;margin-top:8px}
+  .bar>span{display:block;height:100%;background:linear-gradient(90deg,#0d9488,#0e7490);width:0}
+  .cl-school{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);margin-bottom:14px;overflow:hidden}
+  .cl-school>summary{cursor:pointer;list-style:none;padding:14px 18px;display:flex;align-items:center;gap:12px;font-weight:700}
+  .cl-school>summary::-webkit-details-marker{display:none}
+  .cl-school>summary .mini{flex:0 0 120px}
+  .cl-school>summary .mini .bar{margin-top:6px}
+  .cl-school>summary .pct{margin-left:auto;font-size:13px;color:var(--muted);font-weight:600}
+  .cl-items{padding:4px 18px 16px}
+  .cl-item{display:flex;gap:11px;padding:10px 0;border-bottom:1px dashed var(--line);align-items:flex-start}
+  .cl-item:last-child{border-bottom:0}
+  .cl-item input{margin-top:3px;width:18px;height:18px;accent-color:var(--brand);flex:0 0 auto;cursor:pointer}
+  .cl-item label{flex:1;cursor:pointer}
+  .cl-item .task{font-weight:600}
+  .cl-item.done .task{text-decoration:line-through;color:var(--muted)}
+  .cl-item .when{display:inline-block;margin-top:2px;font-size:12px;color:var(--brand2);font-weight:700}
+  .cl-item .when.tbd{color:var(--tbd)}
+  .cl-item .note{display:block;font-size:12.5px;color:var(--muted);margin-top:2px}
+  .shared-box{background:#f0fdfa;border:1px solid #99f6e4}
+  .reset{appearance:none;border:1px solid var(--line);background:#fff;color:var(--muted);border-radius:8px;padding:8px 12px;font-size:12.5px;cursor:pointer;font-weight:600}
+  .reset:hover{color:#b91c1c;border-color:#fecaca}
+  /* shared/forms */
+  .info-card{background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:16px 18px;margin-bottom:14px}
+  .info-card h3{margin:0 0 8px;font-size:16px;color:var(--brand)}
+  .info-card p{margin:6px 0}
+  .pill{display:inline-block;background:#f1f5f9;border-radius:6px;padding:1px 7px;font-size:12px;font-weight:600;color:#475569;margin:1px 2px}
+  /* timeline */
+  .tl-month{margin:20px 0 4px;font-size:12.5px;font-weight:800;color:var(--brand);text-transform:uppercase;letter-spacing:.05em;border-bottom:2px solid var(--line);padding-bottom:5px}
+  .tl-item{display:flex;gap:11px;padding:10px 4px;border-bottom:1px dashed var(--line);align-items:flex-start}
+  .tl-item:last-child{border-bottom:0}
+  .tl-dot{flex:0 0 10px;width:10px;height:10px;border-radius:50%;margin-top:6px}
+  .dot-private{background:var(--private)}
+  .dot-public{background:var(--public)}
+  .dot-shared{background:#0ea5e9}
+  .tl-date{flex:0 0 104px;font-weight:800;font-size:13px;color:var(--ink)}
+  .tl-body{flex:1}
+  .tl-body .ev{font-weight:600}
+  .tl-body .sch{font-size:12.5px;color:var(--muted);margin-top:1px}
+  @media(max-width:560px){.tl-date{flex-basis:80px;font-size:12px}}
+  footer{color:var(--muted);font-size:12px;text-align:center;padding:24px}
+  h2.sec{font-size:18px;margin:6px 0 12px}
+  @media(max-width:560px){
+    .row .k{flex-basis:92px}
+    .cl-school>summary .mini{display:none}
+  }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <h1>Middle School Options · 2027–2028 (6th Grade)</h1>
+    <p>Houston, TX · Interactive comparison, admissions details &amp; application checklist · Built from each school's official website</p>
+  </div>
+</header>
+
+<nav class="tabs">
+  <div class="wrap">
+    <button data-tab="compare" class="active">📊 Compare</button>
+    <button data-tab="profiles">🏫 School Profiles</button>
+    <button data-tab="timeline">🗓 Master Timeline</button>
+    <button data-tab="checklist">✅ Application Checklist</button>
+    <button data-tab="shared">📝 Shared Tests &amp; Forms</button>
+    <button data-tab="about">ℹ️ How to use / Sources</button>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <!-- COMPARE -->
+  <section class="panel active" id="compare">
+    <div class="banner">
+      <b>⏱ About the 2027–28 dates:</b> It's July 2026, so most schools have not yet posted their 2027–28 admissions calendars.
+      Dates shown are pulled from each school's official site and labeled
+      <span class="badge b-conf">✔ 2027 cycle</span> when confirmed for next fall's entry,
+      <span class="badge b-prior">↺ prior cycle</span> when they reflect the most recent posted cycle (expect similar), or
+      <span class="badge b-tbd">◷ not yet posted</span> for the HISD School Choice lottery. Always re-verify before you rely on a date.
+    </div>
+    <div class="controls">
+      <span style="font-weight:700;color:var(--muted);font-size:13px">Filter:</span>
+      <button class="chip active" data-filter="all">All (13)</button>
+      <button class="chip" data-filter="Private">Private (9)</button>
+      <button class="chip" data-filter="HISD School Choice">HISD School Choice (4)</button>
+      <button class="chip" data-filter="gt">⭐ Strong G/T fit</button>
+    </div>
+    <div class="tablewrap">
+      <table id="ctable">
+        <thead>
+          <tr>
+            <th data-sort="name">School ▲▼</th>
+            <th data-sort="type">Type</th>
+            <th data-sort="grades">Grades</th>
+            <th data-sort="tuitionNum">Tuition</th>
+            <th data-sort="area">Area</th>
+            <th data-sort="test">Entrance Test</th>
+            <th data-sort="deadlineSort">Key Deadline</th>
+            <th data-sort="appfee">App Fee</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <p style="font-size:12.5px;color:var(--muted);margin-top:10px">Tip: click any column header to sort. Click a school name to jump to its full profile.</p>
+  </section>
+
+  <!-- PROFILES -->
+  <section class="panel" id="profiles">
+    <h2 class="sec">School Profiles</h2>
+    <div class="controls">
+      <button class="chip active" data-pfilter="all">All</button>
+      <button class="chip" data-pfilter="Private">Private</button>
+      <button class="chip" data-pfilter="HISD School Choice">HISD School Choice</button>
+      <button class="chip" data-pfilter="gt">⭐ Strong G/T fit</button>
+    </div>
+    <div class="cards" id="cardgrid"></div>
+  </section>
+
+  <!-- TIMELINE -->
+  <section class="panel" id="timeline">
+    <h2 class="sec">Master Timeline · all schools</h2>
+    <div class="banner">
+      Application season is concentrated in <b>November 2026 – February 2027</b> — the ISEE, teacher recommendations, and several private-school deadlines overlap in that window. HISD magnet dates
+      <span class="badge b-tbd">◷ not yet posted</span> are shown at their <i>expected</i> time based on the last two cycles; re-verify when HISD updates.
+      <span class="badge b-conf">✔</span> confirmed for 2027 entry · <span class="badge b-prior">↺</span> most-recent posted cycle.
+    </div>
+    <div class="legend">
+      <span><span class="tl-dot dot-private" style="display:inline-block"></span> Private</span>
+      <span><span class="tl-dot dot-public" style="display:inline-block"></span> HISD School Choice</span>
+      <span><span class="tl-dot dot-shared" style="display:inline-block"></span> Shared step</span>
+    </div>
+    <div class="controls">
+      <button class="chip active" data-tlfilter="all">All</button>
+      <button class="chip" data-tlfilter="Private">Private</button>
+      <button class="chip" data-tlfilter="HISD School Choice">HISD School Choice</button>
+      <button class="chip" data-tlfilter="Shared">Shared steps</button>
+    </div>
+    <div id="timelineroot"></div>
+  </section>
+
+  <!-- CHECKLIST -->
+  <section class="panel" id="checklist">
+    <h2 class="sec">Application Checklist</h2>
+    <div class="progress-overall">
+      <div style="display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap">
+        <div><b>Overall progress</b> <span id="overallpct" style="color:var(--muted);font-weight:600">0%</span>
+          <div style="font-size:12.5px;color:var(--muted)">Your check-offs are saved automatically in this browser.</div>
+        </div>
+        <button class="reset" id="resetall">Reset all check-offs</button>
+      </div>
+      <div class="bar"><span id="overallbar"></span></div>
+    </div>
+    <div id="checklistroot"></div>
+  </section>
+
+  <!-- SHARED -->
+  <section class="panel" id="shared">
+    <h2 class="sec">Shared Tests &amp; Forms</h2>
+    <p style="color:var(--muted);font-size:13.5px;margin-top:-4px">Several items are used across multiple schools — do these once and reuse.</p>
+    <div id="sharedroot"></div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="panel" id="about">
+    <h2 class="sec">How to use this dashboard</h2>
+    <div class="info-card">
+      <p><b>Compare</b> — sortable/filterable table of all 13 schools with the essentials (tuition, grades, entrance test, key deadline, application fee).</p>
+      <p><b>School Profiles</b> — full detail per school: admissions process, requirements, deadlines, contacts, logistics, and a note on gifted/advanced fit.</p>
+      <p><b>Application Checklist</b> — a step-by-step to-do list per school plus a shared cross-school section. Check items off; your progress is saved in this browser (works offline). Nothing is uploaded anywhere.</p>
+      <p><b>Shared Tests &amp; Forms</b> — the ISEE, HAIS recommendation forms, the HISD School Choice application, FACTS/TEFA financial aid, and more.</p>
+    </div>
+    <div class="info-card">
+      <h3>⭐ Note on your priority: gifted / academically advanced</h3>
+      <p>Schools flagged <span class="badge b-gt">⭐ G/T fit</span> are the strongest matches for an academically advanced 6th grader. Among public options, <b>T.H. Rogers</b> (Vanguard G/T magnet) and <b>Lanier</b> (Vanguard magnet + IB) require your son to be identified <b>Gifted &amp; Talented in all assessment areas</b> to be eligible for the magnet lottery — so confirming/obtaining G/T identification is a key early step (see the checklist). Among private schools, St. John's, Kinkaid, Awty (IB), and St. Thomas' (classical) are the most academically rigorous.</p>
+    </div>
+    <div class="info-card">
+      <h3>Data confidence &amp; sources</h3>
+      <p>Every figure and date below was taken only from the school's <b>official website</b> (or official application portal). Where a school had not yet posted 2027–28 dates, the most recent posted cycle is shown and labeled. Verify final dates on the source links before acting.</p>
+      <div id="sources" style="font-size:13px;margin-top:8px"></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  Built for Sarah · Data current as of July 15, 2026 · Sourced from official school websites &amp; the HISD School Choice site · Re-verify all dates before applying.
+</footer>
+
+<script>
+/* ============================ DATA ============================ */
+const schools = [
+ {
+  id:"sjs", name:"St. John's School", type:"Private", grades:"K–12", tuition:"$36,370", tuitionNum:36370,
+  area:"Boulevard Oaks / River Oaks", address:"2401 Claremont Lane, Houston 77019", phone:"713-850-0222",
+  website:"https://admission.sjs.org", email:"", affiliation:"Independent (non-sectarian)",
+  focus:"Rigorous college-prep · 62 AP/advanced courses · 1:9 advisor ratio · strong athletics & arts",
+  classSize:"Class 6 = natural entry, 50–55 seats", gt:true,
+  gtNote:"Highly rigorous; 6th grade is a natural entry point with the most seats.",
+  aftercare:"Yes", transport:"—",
+  test:"ISEE (one score report; must arrive by Jan 8)",
+  appfee:"See portal", finaid:"Need-based financial aid offered", decisions:"Spring notification",
+  priority:"—", cycle:"confirmed", conf:"High",
+  deadlineShort:"Priority Nov 13 · Final Dec 4", deadlineSort:"2026-11-13",
+  process:[
+   "Apply online (opens Fri Aug 7).",
+   "Submit by priority deadline Fri Nov 13, 4:00 PM (final deadline Fri Dec 4, 4:00 PM).",
+   "Take the ISEE (Aug–Nov or Dec–Jan); one score report must be received by Jan 8.",
+   "Provide Math & English teacher recommendations + an administrator recommendation.",
+   "Send academic records (mid-year + previous-year report cards).",
+   "Student interview + parent/guardian meeting (scheduled together; apply before Nov 13 to be assured a slot).",
+   "Complete writing sample / applicant questionnaire."
+  ],
+  checklist:[
+   {t:"Submit St. John's application (opens Aug 7)", d:"By Nov 13, 2026 (priority)"},
+   {t:"Register & take the ISEE; send score to SJS", d:"Score received by Jan 8, 2027"},
+   {t:"Request Math + English teacher recs & administrator rec", d:"Early Nov 2026"},
+   {t:"Send academic records (mid-year + prior year)", d:"By Dec 4, 2026"},
+   {t:"Complete writing sample / applicant questionnaire", d:"By Dec 4, 2026"},
+   {t:"Attend student interview + parent/guardian meeting", d:"Scheduled after applying"}
+  ]
+ },
+ {
+  id:"kinkaid", name:"The Kinkaid School", type:"Private", grades:"PreK–12", tuition:"$37,620", tuitionNum:37620,
+  area:"Piney Point / Memorial", address:"201 Kinkaid School Drive, Houston 77024", phone:"713-243-5033 (Admission)",
+  website:"https://www.kinkaid.org/admission", email:"admission@kinkaid.org", affiliation:"Independent (non-sectarian)",
+  focus:"Balanced academics, athletics & arts · natural entry PreK/K/6/9 · Centers for STEM & Leadership",
+  classSize:"—", gt:true,
+  gtNote:"6th grade is a natural entry point; strong, well-rounded college-prep program.",
+  aftercare:"Extended Day programs", transport:"—",
+  test:"ISEE (Kinkaid hosts a session Dec 5, 2026)",
+  appfee:"Non-refundable (see portal)", finaid:"Affording Kinkaid (need-based)", decisions:"Fri Mar 5, 2027",
+  priority:"—", cycle:"confirmed", conf:"High (explicit 2027–28)",
+  deadlineShort:"Application due Dec 2, 2026", deadlineSort:"2026-12-02",
+  process:[
+   "Inquire, then apply online. Application deadline (Grades 1–12): Wed Dec 2, 2026.",
+   "Take the ISEE. To test AT Kinkaid on Sat Dec 5, 2026: complete the application by Nov 20 (early registration closes Nov 13). You may also test elsewhere (register at iseeonline.erblearn.org).",
+   "Recommendation request forms open Dec 1, 2026 — English teacher, Math teacher & a School Administrator.",
+   "Submit one Special Interest Recommendation (max two).",
+   "Submit the required Student Essay.",
+   "Send transcripts (two previous years + current fall). All materials due Jan 11, 2027.",
+   "Optional Arts/Athletics portfolio via kinkaid.slideroom.com. 6th-grade applicants may interview online.",
+   "Decision notification: Fri Mar 5, 2027."
+  ],
+  checklist:[
+   {t:"Submit Kinkaid application", d:"By Dec 2, 2026"},
+   {t:"Complete app by Nov 20 to register for ISEE at Kinkaid (early reg closes Nov 13)", d:"Nov 13–20, 2026"},
+   {t:"Take the ISEE (Kinkaid session Dec 5, 2026)", d:"Dec 5, 2026"},
+   {t:"Request English, Math & Administrator recommendations (forms open Dec 1)", d:"From Dec 1, 2026"},
+   {t:"Submit Student Essay + 1 Special Interest Recommendation", d:"By Jan 11, 2027"},
+   {t:"Send transcripts (2 prior years + current fall)", d:"By Jan 11, 2027"},
+   {t:"(Optional) Arts/Athletics portfolio via SlideRoom", d:"By Jan 11, 2027"}
+  ]
+ },
+ {
+  id:"awty", name:"The Awty International School", type:"Private", grades:"PK3–12", tuition:"$35,050", tuitionNum:35050,
+  area:"Spring Branch (Awty School Ln)", address:"7455 Awty School Lane, Houston 77055", phone:"713-580-0579 (Admissions)",
+  website:"https://www.awty.org/admissions", email:"admissions@awty.org", affiliation:"International day school",
+  focus:"IB Diploma + French Baccalauréat · 50+ nationalities · multilingual (French, Spanish, Mandarin, Arabic, German)",
+  classSize:"—", gt:true,
+  gtNote:"Academically rigorous IB pathway; excellent for globally-minded, advanced learners.",
+  aftercare:"Awty Plus", transport:"—",
+  test:"Student interview + on-campus assessment (confirm specifics with Admissions)",
+  appfee:"See portal", finaid:"Need-based financial aid", decisions:"—",
+  priority:"—", cycle:"confirmed", conf:"Med — opening date confirmed; verify exact deadline",
+  deadlineShort:"Opens Sep 1, 2026 · due ≈ Nov 21 (verify)", deadlineSort:"2026-11-21",
+  process:[
+   "Application for 2027–2028 opens Sept 1, 2026 (confirmed on Awty's calendar).",
+   "Secondary School student interviews & campus tours begin Oct 19, 2026.",
+   "Your list notes an application deadline of ≈ Nov 21 — confirm the exact Secondary deadline on Awty's Admissions Calendar.",
+   "Submit application via the Awty admissions portal; complete interview & assessment as directed.",
+   "Contact: admissions@awty.org · 713-580-0579."
+  ],
+  checklist:[
+   {t:"Application opens for 2027–28", d:"Sep 1, 2026"},
+   {t:"Schedule Secondary tour + student interview (begin Oct 19)", d:"From Oct 19, 2026"},
+   {t:"Submit Awty application", d:"≈ Nov 21, 2026 (verify)"},
+   {t:"Confirm any required assessment/records with Admissions", d:"Fall 2026"}
+  ]
+ },
+ {
+  id:"stmarks-ep", name:"St. Mark's Episcopal School", type:"Private", grades:"PK–8", tuition:"$31,500", tuitionNum:31500,
+  area:"Bellaire / West University", address:"3816 Bellaire Blvd, Houston 77025", phone:"713-667-7030",
+  website:"https://www.stmes.org/admission", email:"", affiliation:"Episcopal",
+  focus:"Inclusive Episcopal identity · strong community · Student Support program · arts & athletics",
+  classSize:"—", gt:false,
+  gtNote:"Warm, well-regarded PK–8; solid academics with student-support resources.",
+  aftercare:"Extended Care", transport:"—",
+  test:"ISEE (grades 2–8; St. Mark's code 447585)",
+  appfee:"$100", finaid:"Affordability (tuition assistance)", decisions:"—",
+  priority:"Church members, siblings, alumni children", cycle:"prior", conf:"High",
+  deadlineShort:"Apply by Dec 10 (first round)", deadlineSort:"2026-12-10",
+  process:[
+   "Inquire, visit, then apply online (stmes.fsenrollment.com) with the $100 application fee. Apply by Dec 10 for the first round of decisions.",
+   "Current school submits official records/report cards + teacher recommendation form(s). Grades 6–8 need Math + English teacher recs (HAIS Common forms).",
+   "Admission testing required for PK–8: grades 2–8 take the ISEE (St. Mark's code 447585).",
+   "Upload birth certificate; complete the parent questionnaire; MS applicants also complete a student questionnaire.",
+   "All applicants visit campus — grades 1–8 attend a student visit (typically January–February)."
+  ],
+  checklist:[
+   {t:"Submit St. Mark's Episcopal application + $100 fee", d:"By Dec 10, 2026 (first round)"},
+   {t:"Take the ISEE (send to code 447585)", d:"Fall/winter 2026"},
+   {t:"Request Math + English teacher recs (HAIS forms)", d:"Nov 2026"},
+   {t:"Send school records + upload birth certificate", d:"Before decisions"},
+   {t:"Complete parent + student questionnaires", d:"With application"},
+   {t:"Attend student campus visit", d:"Jan–Feb 2027"}
+  ]
+ },
+ {
+  id:"stfrancis", name:"St. Francis Episcopal School", type:"Private", grades:"PK–12", tuition:"$37,379", tuitionNum:37379,
+  area:"Piney Point / Memorial", address:"MS campus: 335 Piney Point Rd, Houston 77024", phone:"713-458-6112 (Admissions)",
+  website:"https://www.stfrancishouston.org/admissions/middle-school", email:"Admissions@StFrancisHouston.org", affiliation:"Episcopal (Anglican)",
+  focus:"Rigorous academics · arts electives (Tommy Tune-recognized) · competitive athletics · STEAM · 'people for others'",
+  classSize:"—", gt:false,
+  gtNote:"Strong, well-rounded PK–12; MS is grades 5–8 with wide arts & athletics.",
+  aftercare:"Explore & Extend", transport:"—",
+  test:"ISEE (grades 5–8; St. Francis code 447791)",
+  appfee:"Application fee (in portal)", finaid:"Affording St. Francis", decisions:"—",
+  priority:"—", cycle:"confirmed", conf:"High",
+  deadlineShort:"Application due Dec 15 · file complete Feb 1", deadlineSort:"2026-12-15",
+  process:[
+   "Create a Veracross account (inquiry), then apply online. To be counted an applicant, submit the application (demographics, questionnaires, student essays, photo & app fee) by Dec 15. All remaining components due by the Feb 1 file-completion deadline.",
+   "Attend an admissions tour (parents).",
+   "Recommendation forms from current Math & English teachers (submit ~November); optional one special-interest form.",
+   "Transcript/report cards: previous two academic years + current first semester, emailed to Admissions.",
+   "Testing: ISEE required for grades 5–8 (St. Francis code 447791).",
+   "Student Shadow Day + interview with MS administration (details shared in December)."
+  ],
+  checklist:[
+   {t:"Submit St. Francis application (essays, photo, fee)", d:"By Dec 15, 2026"},
+   {t:"Attend admissions tour", d:"Fall 2026"},
+   {t:"Request Math + English teacher recs", d:"Nov 2026"},
+   {t:"Send transcripts (2 prior years + current semester)", d:"By Feb 1, 2027"},
+   {t:"Take the ISEE (send to code 447791)", d:"Before Feb 1, 2027"},
+   {t:"Complete Shadow Day + student interview", d:"After Dec 2026"},
+   {t:"All application components complete", d:"By Feb 1, 2027"}
+  ]
+ },
+ {
+  id:"ste", name:"Saint Thomas' Episcopal School", type:"Private", grades:"PK–12", tuition:"$29,680", tuitionNum:29680,
+  area:"Meyerland / Braeswood", address:"4900 Jackwood, Houston 77096", phone:"713-666-3111",
+  website:"https://www.stes.org/admissions", email:"admissions@stes.org", affiliation:"Episcopal · classical, Christ-centered",
+  focus:"Classical curriculum · Christ-centered · distinctive Scottish Arts (pipe band, highland dance) · Center for Academic Excellence",
+  classSize:"—", gt:true,
+  gtNote:"Rigorous classical education — a strong fit for advanced learners who thrive on structure.",
+  aftercare:"The Studio at STE", transport:"—",
+  test:"ISEE (grades 5–12; STE code 443433; at-home option allowed)",
+  appfee:"See portal", finaid:"Need-based via FACTS (opens Jan 1)", decisions:"Mid-March (priority applicants)",
+  priority:"—", cycle:"prior", conf:"High",
+  deadlineShort:"Priority Jan 15 · file complete Feb 1", deadlineSort:"2027-01-15",
+  process:[
+   "Submit the online application (Veracross). Priority deadline: Jan 15 (rolling/space-available after).",
+   "Register for a placement test: ISEE for grades 5–12 (send scores to STE code 443433; ERB at-home option available).",
+   "Submit academic records: give the release form to the current school in early December; provide ≥2 years of report cards.",
+   "Provide recommendations: 6th grade & up require two — one Math and one English teacher.",
+   "Attend an on-campus family interview (grades 5–12) — this should be the final step.",
+   "Complete the file by Feb 1. Decisions to priority applicants: mid-March. Financial aid via FACTS (opens Jan 1)."
+  ],
+  checklist:[
+   {t:"Submit STE application", d:"By Jan 15, 2027 (priority)"},
+   {t:"Take the ISEE (send to STE code 443433)", d:"Before Feb 1, 2027"},
+   {t:"Give records-release form to current school", d:"Early Dec 2026"},
+   {t:"Request Math + English teacher recommendations", d:"Dec 2026"},
+   {t:"Attend on-campus family interview", d:"Jan 2027 (final step)"},
+   {t:"Complete applicant file", d:"By Feb 1, 2027"}
+  ]
+ },
+ {
+  id:"stanne", name:"St. Anne Catholic School", type:"Private", grades:"PK3–8", tuition:"$13,835", tuitionNum:13835,
+  area:"Montrose / Upper Kirby", address:"2120 Westheimer, Houston 77098", phone:"713-526-3279",
+  website:"https://stannecs.org/apply", email:"admissions@stannecs.org", affiliation:"Catholic (Archdiocese of Galveston-Houston)",
+  focus:"Catholic since 1930 · Junior High 6–8 · academic competitions, arts, athletics, clubs · before/after care",
+  classSize:"Grades 4–8 ≈ 25:1", gt:false,
+  gtNote:"Strong academic Catholic school; graduates matriculate to selective high schools.",
+  aftercare:"HIGHLIGHTS! (to 6 PM)", transport:"—",
+  test:"No external entrance exam — individually scheduled Shadow Day (grades 1–8)",
+  appfee:"$150 (non-refundable, per student)", finaid:"FACTS + TEFA", decisions:"After Feb 1 deadline",
+  priority:"Siblings, then parishioners", cycle:"prior", conf:"High (2027–28 dates inferred from prior cycle)",
+  deadlineShort:"Opens ≈ Sep 1 · due ≈ Feb 1 (siblings ≈ Dec 1)", deadlineSort:"2027-02-01",
+  process:[
+   "Tour campus, then submit the online application (RenWeb) with the $150 non-refundable fee. Applications open ≈ Sep 1; deadline ≈ Feb 1 (sibling applicants ≈ Dec 1). *These follow the current 2026–27 cycle; 2027–28 dates not yet posted.*",
+   "Required documents: birth certificate; baptismal certificate (if Catholic); First Communion certificate (if applicable); current report card + recent standardized test results; Authorization to Release Information (grades 1–8); Teacher Recommendation Forms (required grades 1–8); immunization records.",
+   "Grades 1–8 applicants complete an individually scheduled Shadow Day.",
+   "Admissions Committee reviews after the Feb 1 deadline. Priority: siblings, then St. Anne parishioners."
+  ],
+  checklist:[
+   {t:"Tour St. Anne + submit application with $150 fee", d:"By ≈ Feb 1, 2027 (verify)"},
+   {t:"Gather birth cert (+ baptismal/First Communion if applicable)", d:"With application"},
+   {t:"Request teacher recommendation forms (grades 1–8)", d:"Fall 2026"},
+   {t:"Send current report card + recent test results + release form", d:"With application"},
+   {t:"Complete Shadow Day", d:"Winter 2026–27"},
+   {t:"Submit immunization records", d:"With application"}
+  ]
+ },
+ {
+  id:"sml", name:"St. Mark Lutheran School", type:"Private", grades:"PK3–8", tuition:"$17,950", tuitionNum:17950,
+  area:"Spring Branch (Pech Rd)", address:"1516 Pech Road, Houston 77055", phone:"713-255-3617 (Admissions)",
+  website:"https://www.gostmark.org/admissions", email:"kramon@gostmark.org", affiliation:"Lutheran · Christ-centered",
+  focus:"Christ-centered PK3–8 · two classes of 20 per grade · athletics, fine arts, extended care",
+  classSize:"Grades 1–8: two classes of 20", gt:false,
+  gtNote:"Nurturing Christian community; grade-level readiness assessed individually.",
+  aftercare:"Extended Care", transport:"—",
+  test:"Internal evaluation by SML Resource Specialist (uses your child's STAAR/IOWA/benchmark scores) — no ISEE",
+  appfee:"See portal", finaid:"FACTS (apply early)", decisions:"Emailed Mar 6 · commit Mar 25",
+  priority:"—", cycle:"confirmed", conf:"High",
+  deadlineShort:"Opens Sep 1 · due Jan 15", deadlineSort:"2027-01-15",
+  process:[
+   "Schedule a tour, then apply online (Finalsite). Application opens Sep 1; due Jan 15 for first-round acceptances (space-available after).",
+   "Submit forms, testing & teacher recommendations by Feb 1.",
+   "Complete the applicant profile: birth certificate; teacher rec (grades 6–8 need Math AND English); report card (prior year + current through December); standardized testing results (STAAR/IOWA/benchmark from current school); any ed-psych documentation.",
+   "On-campus student evaluation by the SML Resource Specialist, then an interview with the principal (space-dependent).",
+   "Decisions emailed Mar 6; commit to enroll by Mar 25. Tuition assistance via FACTS — apply early."
+  ],
+  checklist:[
+   {t:"Tour + submit SML application (opens Sep 1)", d:"By Jan 15, 2027"},
+   {t:"Request Math + English teacher recs (grades 6–8)", d:"By Feb 1, 2027"},
+   {t:"Send report cards + standardized test results + birth certificate", d:"By Feb 1, 2027"},
+   {t:"Complete on-campus evaluation + principal interview", d:"Winter 2026–27"},
+   {t:"Submit FACTS tuition-assistance application (if needed)", d:"As early as possible"},
+   {t:"Commit to enroll (decisions emailed Mar 6)", d:"By Mar 25, 2027"}
+  ]
+ },
+ {
+  id:"osl", name:"Our Savior Lutheran School", type:"Private", grades:"EC–8", tuition:"$13,600", tuitionNum:13600,
+  area:"Northwest Houston (Tidwell)", address:"5000 W. Tidwell Rd, Houston 77091", phone:"713-290-8277",
+  website:"https://www.oslschool.org/admissions", email:"wferrarese@oslschool.org", affiliation:"Classical Lutheran (LCMS)",
+  focus:"Classical education (Grammar & Logic School) · House system · accredited NLSA, CCLE, CLSA",
+  classSize:"—", gt:true,
+  gtNote:"Classical, Latin-rich program; Logic School (6–8) suits advanced, independent thinkers.",
+  aftercare:"Yes", transport:"—",
+  test:"OSL 'Logic School Entrance Exam' on campus (grades 6–8) — school's own assessment",
+  appfee:"See portal", finaid:"FACTS", decisions:"Rolling / space-available",
+  priority:"—", cycle:"rolling", conf:"High (process); deadline is rolling",
+  deadlineShort:"Rolling — visits after Jan 1", deadlineSort:"2027-01-02",
+  process:[
+   "Schedule a private tour (RenWeb) — the required first step.",
+   "Create an account and submit the online application.",
+   "After a completed application, you'll be invited to an 'Eagle Visit' — grades 1–8 do a full-day 'Eagle for the Day'. Visits are not scheduled before Jan 1.",
+   "On-campus assessment: Logic School applicants (grades 6–8) take the Logic School Entrance Exam.",
+   "Admissions is rolling and space-dependent (no fixed public deadline). Tuition assistance via FACTS."
+  ],
+  checklist:[
+   {t:"Schedule private tour (RenWeb)", d:"Fall 2026"},
+   {t:"Submit online application", d:"Fall/winter 2026"},
+   {t:"Complete 'Eagle for the Day' full-day visit", d:"After Jan 1, 2027"},
+   {t:"Take the Logic School Entrance Exam (grades 6–8)", d:"During Eagle Visit"},
+   {t:"Submit FACTS application (if seeking aid)", d:"Early as possible"}
+  ]
+ },
+ {
+  id:"throgers", name:"T.H. Rogers School", type:"HISD School Choice", grades:"K–8 (Vanguard)", tuition:"Free (public)", tuitionNum:0,
+  area:"Tanglewood / Galleria", address:"5840 San Felipe St, Houston 77057", phone:"713-917-3565",
+  website:"https://throgers.houstonisd.org", email:"", affiliation:"HISD Vanguard (Gifted & Talented) magnet",
+  focus:"Vanguard G/T magnet · also serves Deaf Education & Multiply Impaired programs · Credit-by-Exam, HS credit courses, NJHS",
+  classSize:"—", gt:true,
+  gtNote:"The premier public G/T option — a dedicated Vanguard magnet. Requires G/T identification.",
+  aftercare:"After-school care", transport:"HISD bus routes",
+  test:"Eligibility: student must be identified Gifted & Talented (G/T) — no admissions test fee",
+  appfee:"None (public)", finaid:"—", decisions:"HISD lottery notification (spring)",
+  priority:"Sibling (entry grades), in-district residence, HISD employee", cycle:"tbd", conf:"High (program); 2027–28 lottery dates not yet posted",
+  deadlineShort:"HISD lottery — Phase I ≈ Dec 2026–Feb 2027", deadlineSort:"2027-02-27",
+  process:[
+   "Confirm your son's Gifted & Talented (G/T) identification (required for Vanguard eligibility) — see houstonisd.org Gifted & Talented.",
+   "Schedule a campus tour ('Becoming a Ram').",
+   "Apply through the single HISD School Choice application (choosehisd.my.site.com) — rank up to 10 schools. Apply in Phase I for the best lottery odds.",
+   "2027–28 dates are not yet posted. Based on the last two cycles, Phase I opens ≈ early December 2026, closes ≈ late February 2027, with lottery notifications ≈ late March / April 2027. Re-verify when HISD updates the site."
+  ],
+  checklist:[
+   {t:"Confirm/obtain G/T identification (all areas)", d:"Before applying"},
+   {t:"Schedule a T.H. Rogers tour", d:"Fall 2026"},
+   {t:"Submit HISD School Choice application (rank T.H. Rogers)", d:"Phase I ≈ Dec 2026–Feb 2027 (verify)"},
+   {t:"Watch for HISD lottery notification", d:"≈ Late Mar / Apr 2027"}
+  ]
+ },
+ {
+  id:"pinoak", name:"Pin Oak Middle School", type:"HISD School Choice", grades:"6–8", tuition:"Free (public)", tuitionNum:0,
+  area:"Bellaire", address:"4601 Glenmont St, Bellaire 77401", phone:"713-295-6500",
+  website:"https://pinoak.houstonisd.org", email:"", affiliation:"HISD Foreign Languages Magnet",
+  focus:"Foreign Languages Magnet (Chinese, French, German, Italian, Spanish) · application-only · one of HISD's most-applied-to schools",
+  classSize:"—", gt:false,
+  gtNote:"Highly sought language magnet; strong academics for a motivated student.",
+  aftercare:"—", transport:"HISD (varies)",
+  test:"No entrance test — magnet lottery via School Choice (open to families in HISD boundaries)",
+  appfee:"None (public)", finaid:"—", decisions:"HISD lottery notification (spring)",
+  priority:"Sibling (entry grades), in-district residence, HISD employee", cycle:"tbd", conf:"High (program); lottery dates not yet posted",
+  deadlineShort:"HISD lottery — Phase I ≈ Dec 2026–Feb 2027", deadlineSort:"2027-02-27",
+  process:[
+   "Application-only campus — open to any family living within HISD boundaries regardless of your zoned school.",
+   "Apply through the single HISD School Choice application (choosehisd.my.site.com) and rank Pin Oak; apply in Phase I for the best odds.",
+   "See Pin Oak's 'Application Process' page for language-program details.",
+   "2027–28 lottery dates not yet posted — expect Phase I ≈ early Dec 2026 to late Feb 2027; notifications ≈ spring 2027. It is among the most competitive magnets, so rank it thoughtfully."
+  ],
+  checklist:[
+   {t:"Review Pin Oak language-magnet program & tour", d:"Fall 2026"},
+   {t:"Submit HISD School Choice application (rank Pin Oak)", d:"Phase I ≈ Dec 2026–Feb 2027 (verify)"},
+   {t:"Watch for HISD lottery notification", d:"≈ Late Mar / Apr 2027"}
+  ]
+ },
+ {
+  id:"lanier", name:"Lanier Middle School", type:"HISD School Choice", grades:"6–8", tuition:"Free (public)", tuitionNum:0,
+  area:"Montrose / Neartown", address:"2600 Woodhead St, Houston 77098", phone:"See lanier.houstonisd.org",
+  website:"https://lanier.houstonisd.org", email:"", affiliation:"HISD Vanguard magnet + IB Middle Years Programme",
+  focus:"The only Vanguard Magnet + IB MYP in HISD · Language Acquisition, Movement, Arts & Design electives · specialized G/T instruction",
+  classSize:"—", gt:true,
+  gtNote:"Top public G/T + IB middle school. Vanguard lottery requires G/T identification in ALL areas.",
+  aftercare:"—", transport:"HISD (varies)",
+  test:"Eligibility: G/T identification in ALL areas (reading/social studies AND math/science)",
+  appfee:"None (public)", finaid:"—", decisions:"HISD lottery notification (spring)",
+  priority:"Sibling (entry grades), in-district residence, HISD employee", cycle:"tbd", conf:"High (program); lottery dates not yet posted",
+  deadlineShort:"HISD lottery — Phase I ≈ Dec 2026–Feb 2027", deadlineSort:"2027-02-27",
+  process:[
+   "Confirm your son is identified Gifted & Talented (G/T) in all areas — required to qualify for Lanier's Vanguard magnet lottery.",
+   "Review the LMS Magnet Program info and attend a tour / info session.",
+   "Apply through the single HISD School Choice application (choosehisd.my.site.com) and rank Lanier; apply in Phase I.",
+   "2027–28 lottery dates not yet posted — expect Phase I ≈ early Dec 2026 to late Feb 2027; notifications ≈ spring 2027."
+  ],
+  checklist:[
+   {t:"Confirm G/T identification in all areas", d:"Before applying"},
+   {t:"Attend Lanier magnet info session / tour", d:"Fall 2026"},
+   {t:"Submit HISD School Choice application (rank Lanier)", d:"Phase I ≈ Dec 2026–Feb 2027 (verify)"},
+   {t:"Watch for HISD lottery notification", d:"≈ Late Mar / Apr 2027"}
+  ]
+ },
+ {
+  id:"briarmeadow", name:"Briarmeadow Charter", type:"HISD School Choice", grades:"K–8", tuition:"Free (public)", tuitionNum:0,
+  area:"Woodlake / Westside", address:"3601 Dunvale, Houston 77063", phone:"713-458-5500",
+  website:"https://briarmeadow.houstonisd.org", email:"", affiliation:"HISD in-district charter",
+  focus:"IB Primary Years Programme (elementary) · 'Advanced Middle School' (6–8) for all students, incl. HS credit (Algebra I, Spanish I)",
+  classSize:"—", gt:false,
+  gtNote:"Small charter with a school-wide advanced MS curriculum and early high-school credit.",
+  aftercare:"Before/after care", transport:"HISD (varies)",
+  test:"No entrance test — 100% application-based lottery via School Choice",
+  appfee:"None (public)", finaid:"—", decisions:"HISD lottery notification (spring)",
+  priority:"Sibling (entry grades), in-district residence, HISD employee", cycle:"tbd", conf:"High (program); lottery dates not yet posted",
+  deadlineShort:"HISD lottery — Phase I ≈ Dec 2026–Feb 2027", deadlineSort:"2027-02-27",
+  process:[
+   "100% application-based charter — apply through the single HISD School Choice application (choosehisd.my.site.com) and rank Briarmeadow.",
+   "All middle-school students (6–8) take the advanced curriculum, including high-school credit in Algebra I and Spanish I.",
+   "Applicants enter the lottery; if a grade is full you're placed on the waitlist.",
+   "2027–28 lottery dates not yet posted — expect Phase I ≈ early Dec 2026 to late Feb 2027; notifications ≈ spring 2027."
+  ],
+  checklist:[
+   {t:"Review Briarmeadow Advanced MS program & tour", d:"Fall 2026"},
+   {t:"Submit HISD School Choice application (rank Briarmeadow)", d:"Phase I ≈ Dec 2026–Feb 2027 (verify)"},
+   {t:"Watch for HISD lottery notification", d:"≈ Late Mar / Apr 2027"}
+  ]
+ }
+];
+
+/* Shared cross-school checklist */
+const sharedChecklist = {
+  title:"Shared / cross-school to-dos",
+  items:[
+   {t:"Register for the ISEE and know each school's code (SJS, Kinkaid, St. Mark's Ep. 447585, St. Francis 447791, St. Thomas' 443433)", d:"Test Aug 2026–Jan 2027; earliest report needed by Jan 8 (SJS)"},
+   {t:"Confirm/obtain your son's Gifted & Talented (G/T) identification — required for T.H. Rogers & Lanier Vanguard magnets", d:"Before HISD Phase I"},
+   {t:"Submit ONE HISD School Choice application ranking up to 10 schools (covers T.H. Rogers, Pin Oak, Lanier, Briarmeadow)", d:"Phase I ≈ Dec 2026–Feb 2027 (verify)"},
+   {t:"Request Math + English teacher recommendations (needed by most private schools; HAIS Common forms accepted widely)", d:"Ideally early November 2026"},
+   {t:"Gather transcripts / report cards (previous 2 years + current fall) for private applications", d:"Fall 2026"},
+   {t:"If seeking aid: complete the FACTS application (used by St. Thomas', St. Mark Lutheran, St. Anne + others)", d:"Opens ≈ Jan 1, 2027"}
+  ]
+};
+
+/* Shared tests & forms reference cards */
+const sharedInfo = [
+ {h:"ISEE — Independent School Entrance Exam (by ERB)",
+  html:`The common entrance test for most Houston private schools. Used by <b>St. John's, Kinkaid, St. Mark's Episcopal (gr 2–8), St. Francis (5–8), and St. Thomas' (5–12)</b>. Register at <a href="https://iseeonline.erblearn.org" target="_blank">iseeonline.erblearn.org</a>. You typically take it once per admission cycle and send the score to each school using its code.
+  <div style="margin-top:8px">School codes: <span class="pill">St. Mark's Episcopal 447585</span><span class="pill">St. Francis 447791</span><span class="pill">St. Thomas' 443433</span><span class="pill">Kinkaid — hosts its own session Dec 5, 2026</span><span class="pill">St. John's — report by Jan 8</span></div>
+  <div style="margin-top:6px;color:var(--muted);font-size:12.5px">An ERB at-home testing option is available at some schools (e.g., St. Thomas'). Confirm the current ISEE fee on the ERB site.</div>`},
+ {h:"HAIS Common Recommendation Forms",
+  html:`Many Houston Area Independent Schools accept the shared <b>HAIS Common Teacher Recommendation</b> forms (separate Math and English versions for grades 6–12). Requesting these once from your son's current Math and English teachers can cover several private applications — request them in early November so teachers have time.`},
+ {h:"HISD School Choice application (one app, up to 10 schools)",
+  html:`All four public options (<b>T.H. Rogers, Pin Oak, Lanier, Briarmeadow</b>) use the single HISD School Choice application at <a href="https://choosehisd.my.site.com/Apply/SiteLanding" target="_blank">choosehisd.my.site.com</a>. Rank up to 10 schools/programs in true order of preference. <b>Phase I</b> is a lottery (apply here for best odds); <b>Phase II</b> is first-come for remaining seats. Note: for grades 6–12 you must apply even if you're zoned to the magnet school. Lottery priorities: sibling attending (entry grades K/6/9), multiple births, in-district residence, and HISD employees. <br><span style="color:var(--muted);font-size:12.5px">2027–28 dates not yet posted. Prior cycles: Phase I opened Dec 9–10 and closed mid/late Feb, with notifications in late March/April.</span>`},
+ {h:"Gifted & Talented (G/T) identification",
+  html:`Required to be eligible for the <b>Vanguard</b> magnet lottery at <b>T.H. Rogers</b> and <b>Lanier</b> — students must be identified G/T in all assessment areas (reading/social studies and math/science). Start early. Details: <a href="https://www.houstonisd.org/schools-academics/academics/gifted-talented" target="_blank">HISD Gifted &amp; Talented</a>.`},
+ {h:"Financial aid — FACTS & TEFA",
+  html:`Most private schools process need-based aid through <b>FACTS</b> (<a href="https://online.factsmgt.com" target="_blank">online.factsmgt.com</a>) — used by St. Thomas', St. Mark Lutheran, St. Anne and others; St. Thomas' FACTS opens ≈ Jan 1. Apply for aid early, in parallel with the admissions application. Several schools (St. Mark Lutheran, St. Anne) also reference <b>TEFA</b> — the new Texas Education Freedom Account program.`},
+ {h:"Which schools use their own assessment (no ISEE)",
+  html:`<b>Our Savior Lutheran</b> — its own 'Logic School Entrance Exam' (grades 6–8). <b>St. Mark Lutheran</b> — internal Resource-Specialist evaluation using your child's existing STAAR/IOWA/benchmark scores. <b>St. Anne Catholic</b> — a Shadow Day (no external test). The HISD magnets use the lottery (plus G/T identification for Vanguard).`}
+];
+
+/* Master timeline events (chronological). cy: confirmed | prior | tbd */
+const timeline=[
+ {sort:"2026-08-01",month:"Aug 2026",date:"Aug–Jan",type:"Shared",school:"Shared · ISEE (used by SJS, Kinkaid, St. Mark's Ep., St. Francis, St. Thomas')",event:"ISEE testing window — register at erblearn.org; send scores to each school's code",cy:"confirmed"},
+ {sort:"2026-08-07",month:"Aug 2026",date:"Fri Aug 7",type:"Private",school:"St. John's School",event:"Application opens",cy:"confirmed"},
+ {sort:"2026-09-01a",month:"Sep 2026",date:"Sep 1",type:"Private",school:"The Awty International School",event:"Application opens for 2027–28",cy:"confirmed"},
+ {sort:"2026-09-01b",month:"Sep 2026",date:"Sep 1",type:"Private",school:"St. Mark Lutheran School",event:"Application opens",cy:"confirmed"},
+ {sort:"2026-09-01c",month:"Sep 2026",date:"≈ Sep 1",type:"Private",school:"St. Anne Catholic School",event:"Applications open (prior-cycle pattern)",cy:"prior"},
+ {sort:"2026-10-19",month:"Oct 2026",date:"Oct 19",type:"Private",school:"The Awty International School",event:"Secondary interviews & campus tours begin",cy:"confirmed"},
+ {sort:"2026-11-13a",month:"Nov 2026",date:"Fri Nov 13",type:"Private",school:"St. John's School",event:"Priority application deadline (4:00 PM)",cy:"confirmed"},
+ {sort:"2026-11-13b",month:"Nov 2026",date:"Nov 13",type:"Private",school:"The Kinkaid School",event:"ISEE-at-Kinkaid early registration closes",cy:"confirmed"},
+ {sort:"2026-11-20",month:"Nov 2026",date:"Nov 20",type:"Private",school:"The Kinkaid School",event:"Complete application to register for the ISEE at Kinkaid",cy:"confirmed"},
+ {sort:"2026-11-21",month:"Nov 2026",date:"≈ Nov 21",type:"Private",school:"The Awty International School",event:"Application deadline (verify on Awty's calendar)",cy:"prior"},
+ {sort:"2026-12-01a",month:"Dec 2026",date:"Dec 1",type:"Private",school:"The Kinkaid School",event:"Recommendation request forms open (English, Math, Administrator)",cy:"confirmed"},
+ {sort:"2026-12-01b",month:"Dec 2026",date:"≈ Dec 1",type:"Private",school:"St. Anne Catholic School",event:"Sibling-applicant deadline (prior-cycle pattern)",cy:"prior"},
+ {sort:"2026-12-02",month:"Dec 2026",date:"Wed Dec 2",type:"Private",school:"The Kinkaid School",event:"Application deadline (grades 1–12)",cy:"confirmed"},
+ {sort:"2026-12-04",month:"Dec 2026",date:"Fri Dec 4",type:"Private",school:"St. John's School",event:"Final application deadline (4:00 PM)",cy:"confirmed"},
+ {sort:"2026-12-05",month:"Dec 2026",date:"Sat Dec 5",type:"Private",school:"The Kinkaid School",event:"ISEE hosted at Kinkaid (check-in 8:30, test 9:00)",cy:"confirmed"},
+ {sort:"2026-12-08",month:"Dec 2026",date:"≈ early Dec",type:"HISD School Choice",school:"HISD School Choice — T.H. Rogers, Pin Oak, Lanier, Briarmeadow",event:"Phase I application expected to OPEN (2027–28 dates not yet posted)",cy:"tbd"},
+ {sort:"2026-12-10",month:"Dec 2026",date:"Dec 10",type:"Private",school:"St. Mark's Episcopal School",event:"Apply by (first round of decisions)",cy:"prior"},
+ {sort:"2026-12-15",month:"Dec 2026",date:"Dec 15",type:"Private",school:"St. Francis Episcopal School",event:"Application due (essays, photo, fee)",cy:"confirmed"},
+ {sort:"2027-01-01",month:"Jan 2027",date:"Jan 1",type:"Shared",school:"Shared · financial aid",event:"FACTS aid application opens (St. Thomas' & others)",cy:"confirmed"},
+ {sort:"2027-01-02",month:"Jan 2027",date:"After Jan 1",type:"Private",school:"Our Savior Lutheran School",event:"'Eagle for the Day' visits begin (rolling admissions)",cy:"prior"},
+ {sort:"2027-01-08",month:"Jan 2027",date:"Jan 8",type:"Private",school:"St. John's School",event:"ISEE score report must be received",cy:"confirmed"},
+ {sort:"2027-01-11",month:"Jan 2027",date:"Jan 11",type:"Private",school:"The Kinkaid School",event:"All application materials due (transcripts, recs, essay)",cy:"confirmed"},
+ {sort:"2027-01-15a",month:"Jan 2027",date:"Jan 15",type:"Private",school:"Saint Thomas' Episcopal School",event:"Priority application deadline",cy:"prior"},
+ {sort:"2027-01-15b",month:"Jan 2027",date:"Jan 15",type:"Private",school:"St. Mark Lutheran School",event:"Application due (first-round acceptances)",cy:"confirmed"},
+ {sort:"2027-01-20",month:"Jan 2027",date:"Jan–Feb",type:"Private",school:"St. Mark's Episcopal School",event:"Applicant campus visits",cy:"prior"},
+ {sort:"2027-02-01a",month:"Feb 2027",date:"Feb 1",type:"Private",school:"St. Francis Episcopal School",event:"File-completion deadline (all components)",cy:"confirmed"},
+ {sort:"2027-02-01b",month:"Feb 2027",date:"Feb 1",type:"Private",school:"Saint Thomas' Episcopal School",event:"File-completion deadline",cy:"prior"},
+ {sort:"2027-02-01c",month:"Feb 2027",date:"Feb 1",type:"Private",school:"St. Mark Lutheran School",event:"Forms, testing & recommendations due",cy:"confirmed"},
+ {sort:"2027-02-01d",month:"Feb 2027",date:"≈ Feb 1",type:"Private",school:"St. Anne Catholic School",event:"Application deadline (prior-cycle pattern)",cy:"prior"},
+ {sort:"2027-02-27",month:"Feb 2027",date:"≈ late Feb",type:"HISD School Choice",school:"HISD School Choice — all 4 public options",event:"Phase I application expected to CLOSE (lottery entry)",cy:"tbd"},
+ {sort:"2027-03-05",month:"Mar 2027",date:"Fri Mar 5",type:"Private",school:"The Kinkaid School",event:"Admission decisions released",cy:"confirmed"},
+ {sort:"2027-03-06",month:"Mar 2027",date:"Mar 6",type:"Private",school:"St. Mark Lutheran School",event:"Decisions emailed",cy:"confirmed"},
+ {sort:"2027-03-15",month:"Mar 2027",date:"Mid-March",type:"Private",school:"Saint Thomas' Episcopal School",event:"Decisions to priority applicants",cy:"prior"},
+ {sort:"2027-03-25",month:"Mar 2027",date:"Mar 25",type:"Private",school:"St. Mark Lutheran School",event:"Commit-to-enroll deadline",cy:"confirmed"},
+ {sort:"2027-04-08",month:"Apr 2027",date:"≈ late Mar/Apr",type:"HISD School Choice",school:"HISD School Choice — all 4 public options",event:"Lottery notifications expected (Phase II opens same day)",cy:"tbd"}
+];
+const monthsOrder=["Aug 2026","Sep 2026","Oct 2026","Nov 2026","Dec 2026","Jan 2027","Feb 2027","Mar 2027","Apr 2027"];
+let tlFilter="all";
+function renderTimeline(){
+  const root=document.querySelector("#timelineroot"); root.innerHTML="";
+  const evs=timeline.filter(e=> tlFilter==="all"?true : e.type===tlFilter)
+    .slice().sort((a,b)=> a.sort<b.sort?-1: a.sort>b.sort?1:0);
+  monthsOrder.forEach(mo=>{
+    const items=evs.filter(e=>e.month===mo);
+    if(!items.length) return;
+    const h=document.createElement("div"); h.className="tl-month"; h.textContent=mo; root.appendChild(h);
+    items.forEach(e=>{
+      const dotCls=e.type==="Private"?"dot-private":e.type==="HISD School Choice"?"dot-public":"dot-shared";
+      const d=document.createElement("div"); d.className="tl-item";
+      d.innerHTML=`<span class="tl-dot ${dotCls}"></span>`+
+        `<span class="tl-date">${e.date}</span>`+
+        `<span class="tl-body"><span class="ev">${e.event}</span> ${cycleBadge(e.cy)}`+
+        `<div class="sch">${e.school}</div></span>`;
+      root.appendChild(d);
+    });
+  });
+}
+document.querySelectorAll('[data-tlfilter]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('[data-tlfilter]').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); tlFilter=b.dataset.tlfilter; renderTimeline();
+}));
+
+/* ============================ RENDER ============================ */
+const $ = s => document.querySelector(s);
+const cycleBadge = c =>
+  c==="confirmed" ? '<span class="badge b-conf">✔ 2027 cycle</span>' :
+  c==="prior" ? '<span class="badge b-prior">↺ prior cycle</span>' :
+  c==="rolling" ? '<span class="badge b-tbd">↻ rolling</span>' :
+  '<span class="badge b-tbd">◷ not yet posted</span>';
+
+/* --- Compare table --- */
+let sortKey="type", sortDir=1, tableFilter="all";
+function passFilter(s,f){ return f==="all" ? true : f==="gt" ? s.gt : s.type===f; }
+function renderTable(){
+  const rows = schools.filter(s=>passFilter(s,tableFilter)).slice().sort((a,b)=>{
+    let x=a[sortKey], y=b[sortKey];
+    if(typeof x==="string"){x=x.toLowerCase();y=y.toLowerCase();}
+    return x<y?-1*sortDir : x>y?1*sortDir : 0;
+  });
+  const tb = $("#ctable tbody"); tb.innerHTML="";
+  rows.forEach(s=>{
+    const tr=document.createElement("tr");
+    const typeBadge = s.type==="Private"
+      ? '<span class="badge b-private">Private</span>'
+      : '<span class="badge b-public">HISD Choice</span>';
+    const gtStar = s.gt ? ' <span class="badge b-gt">⭐ G/T</span>' : '';
+    tr.innerHTML =
+      `<td><a href="#" class="schoolname" data-goto="${s.id}" style="text-decoration:none">${s.name}</a>${gtStar}<div class="sub">${s.affiliation}</div></td>`+
+      `<td>${typeBadge}</td>`+
+      `<td>${s.grades}</td>`+
+      `<td><b>${s.tuition}</b></td>`+
+      `<td>${s.area}</td>`+
+      `<td>${s.test}</td>`+
+      `<td>${s.deadlineShort}<div style="margin-top:3px">${cycleBadge(s.cycle)}</div></td>`+
+      `<td>${s.appfee}</td>`;
+    tb.appendChild(tr);
+  });
+  document.querySelectorAll('[data-goto]').forEach(a=>a.addEventListener('click',e=>{
+    e.preventDefault(); switchTab('profiles');
+    setTimeout(()=>{ const el=$('#card-'+a.dataset.goto); if(el){el.scrollIntoView({behavior:'smooth',block:'center'}); el.style.boxShadow='0 0 0 3px var(--brand)'; setTimeout(()=>el.style.boxShadow='',1500);} },60);
+  }));
+}
+document.querySelectorAll('#ctable th').forEach(th=>th.addEventListener('click',()=>{
+  const k=th.dataset.sort; if(sortKey===k) sortDir*=-1; else {sortKey=k; sortDir=1;} renderTable();
+}));
+document.querySelectorAll('[data-filter]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('[data-filter]').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); tableFilter=b.dataset.filter; renderTable();
+}));
+
+/* --- Profile cards --- */
+function renderCards(){
+  const grid=$("#cardgrid"); grid.innerHTML="";
+  schools.filter(s=>passFilter(s,cardFilter)).forEach(s=>{
+    const el=document.createElement("div"); el.className="card"; el.id="card-"+s.id;
+    const typeBadge = s.type==="Private" ? '<span class="badge b-private">Private</span>' : '<span class="badge b-public">HISD School Choice</span>';
+    const gtBadge = s.gt ? '<span class="badge b-gt">⭐ Strong G/T fit</span>' : '';
+    el.innerHTML = `
+      <div class="head">
+        <h3>${s.name}</h3>
+        <div class="meta">${s.affiliation} · ${s.area}</div>
+        <div class="tags">${typeBadge}${gtBadge}${cycleBadge(s.cycle)}</div>
+      </div>
+      <div class="body">
+        <div class="row"><div class="k">Grades</div><div class="v">${s.grades}</div></div>
+        <div class="row"><div class="k">Tuition</div><div class="v"><b>${s.tuition}</b></div></div>
+        <div class="row"><div class="k">Key deadline</div><div class="v">${s.deadlineShort}</div></div>
+        <div class="row"><div class="k">Entrance test</div><div class="v">${s.test}</div></div>
+        <div class="row"><div class="k">App fee</div><div class="v">${s.appfee}</div></div>
+        <div class="row"><div class="k">Decisions</div><div class="v">${s.decisions||"—"}</div></div>
+        <div class="row"><div class="k">Financial aid</div><div class="v">${s.finaid||"—"}</div></div>
+        <div class="row"><div class="k">Class size</div><div class="v">${s.classSize||"—"}</div></div>
+        <div class="row"><div class="k">Aftercare</div><div class="v">${s.aftercare||"—"}</div></div>
+        <div class="row"><div class="k">Focus</div><div class="v">${s.focus}</div></div>
+        ${s.priority && s.priority!=="—" ? `<div class="row"><div class="k">Priority</div><div class="v">${s.priority}</div></div>`:""}
+        <div class="row"><div class="k">Address</div><div class="v">${s.address}<br>${s.phone}${s.email?` · <a href="mailto:${s.email}">${s.email}</a>`:""}</div></div>
+        ${s.gt?`<div class="row"><div class="k">⭐ G/T note</div><div class="v" style="color:var(--gt)">${s.gtNote}</div></div>`:`<div class="row"><div class="k">Note</div><div class="v">${s.gtNote}</div></div>`}
+        <details class="proc"><summary>Admissions process &amp; requirements</summary>
+          <div class="inner"><ol>${s.process.map(p=>`<li>${p}</li>`).join("")}</ol>
+          <div style="color:var(--muted);font-size:12px;margin-top:6px">Data confidence: ${s.conf}</div></div>
+        </details>
+      </div>
+      <div class="foot">
+        <span style="color:var(--muted)">${s.type}</span>
+        <a class="btnlink" href="${s.website}" target="_blank" rel="noopener">Official admissions ↗</a>
+      </div>`;
+    grid.appendChild(el);
+  });
+}
+let cardFilter="all";
+document.querySelectorAll('[data-pfilter]').forEach(b=>b.addEventListener('click',()=>{
+  document.querySelectorAll('[data-pfilter]').forEach(x=>x.classList.remove('active'));
+  b.classList.add('active'); cardFilter=b.dataset.pfilter; renderCards();
+}));
+
+/* --- Checklist with localStorage --- */
+const LS="ms2728_checklist_v1";
+let done = JSON.parse(localStorage.getItem(LS)||"{}");
+function saveDone(){ localStorage.setItem(LS, JSON.stringify(done)); }
+function itemKey(sid,i){ return sid+"::"+i; }
+
+function renderChecklist(){
+  const root=$("#checklistroot"); root.innerHTML="";
+  // shared first
+  root.appendChild(buildClBlock("shared", sharedChecklist.title, sharedChecklist.items, true));
+  // per-school
+  schools.forEach(s=>{
+    root.appendChild(buildClBlock(s.id, s.name, s.checklist, false, s));
+  });
+  updateOverall();
+}
+function buildClBlock(sid,title,items,shared,school){
+  const d=document.createElement("details"); d.className="cl-school"+(shared?" shared-box":""); d.open=shared;
+  const total=items.length;
+  let comp=items.reduce((n,_,i)=>n+(done[itemKey(sid,i)]?1:0),0);
+  const pct = total? Math.round(comp/total*100):0;
+  const typeTag = shared ? '<span class="badge b-conf">shared</span>'
+    : (school.type==="Private"?'<span class="badge b-private">Private</span>':'<span class="badge b-public">HISD</span>');
+  d.innerHTML =
+    `<summary>
+       <span>${shared?"🔗 ":""}${title} ${typeTag}</span>
+       <span class="mini"><div class="bar"><span style="width:${pct}%"></span></div></span>
+       <span class="pct" data-pct="${sid}">${comp}/${total} · ${pct}%</span>
+     </summary>
+     <div class="cl-items">${items.map((it,i)=>{
+        const k=itemKey(sid,i); const on=!!done[k];
+        const tbd = (it.d||"").toLowerCase().includes("verify")||(it.d||"").includes("≈")||(it.d||"").toLowerCase().includes("rolling");
+        return `<div class="cl-item ${on?'done':''}" data-k="${k}">
+           <input type="checkbox" ${on?'checked':''} id="cb_${k}">
+           <label for="cb_${k}"><span class="task">${it.t}</span>
+             ${it.d?`<span class="when ${tbd?'tbd':''}">📅 ${it.d}</span>`:""}
+           </label></div>`;
+      }).join("")}</div>`;
+  d.querySelectorAll('input[type=checkbox]').forEach(cb=>cb.addEventListener('change',e=>{
+    const item=e.target.closest('.cl-item'); const k=item.dataset.k;
+    if(e.target.checked){done[k]=1; item.classList.add('done');} else {delete done[k]; item.classList.remove('done');}
+    saveDone(); refreshBlockPct(sid,items.length); updateOverall();
+  }));
+  return d;
+}
+function refreshBlockPct(sid,total){
+  let comp=0; for(let i=0;i<total;i++) if(done[itemKey(sid,i)]) comp++;
+  const pct=total?Math.round(comp/total*100):0;
+  const lab=document.querySelector(`[data-pct="${sid}"]`);
+  if(lab){ lab.textContent=`${comp}/${total} · ${pct}%`;
+    const bar=lab.closest('summary').querySelector('.bar>span'); if(bar) bar.style.width=pct+"%"; }
+}
+function updateOverall(){
+  let total=sharedChecklist.items.length, comp=0;
+  sharedChecklist.items.forEach((_,i)=>{if(done[itemKey("shared",i)])comp++;});
+  schools.forEach(s=>{ total+=s.checklist.length; s.checklist.forEach((_,i)=>{if(done[itemKey(s.id,i)])comp++;}); });
+  const pct= total?Math.round(comp/total*100):0;
+  $("#overallpct").textContent=`— ${comp} of ${total} done (${pct}%)`;
+  $("#overallbar").style.width=pct+"%";
+}
+$("#resetall").addEventListener('click',()=>{
+  if(confirm("Clear all your check-offs? This can't be undone.")){ done={}; saveDone(); renderChecklist(); }
+});
+
+/* --- Shared info + sources --- */
+function renderShared(){
+  const root=$("#sharedroot"); root.innerHTML="";
+  sharedInfo.forEach(c=>{
+    const d=document.createElement("div"); d.className="info-card";
+    d.innerHTML=`<h3>${c.h}</h3><div>${c.html}</div>`; root.appendChild(d);
+  });
+}
+function renderSources(){
+  const el=$("#sources");
+  el.innerHTML = schools.map(s=>`<div style="padding:3px 0">${s.name} — <a href="${s.website}" target="_blank" rel="noopener">${s.website.replace('https://','')}</a></div>`).join("")
+    + `<div style="padding:3px 0">HISD School Choice — <a href="https://schoolchoice.houstonisd.org" target="_blank">schoolchoice.houstonisd.org</a></div>`;
+}
+
+/* --- Tabs --- */
+function switchTab(name){
+  document.querySelectorAll('nav.tabs button').forEach(b=>b.classList.toggle('active',b.dataset.tab===name));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===name));
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+document.querySelectorAll('nav.tabs button').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+
+/* init */
+renderTable(); renderCards(); renderTimeline(); renderChecklist(); renderShared(); renderSources();
+</script>
+</body>
+</html>
